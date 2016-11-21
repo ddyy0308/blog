@@ -22,7 +22,175 @@
       <h1>
 <a id="最流行的web开发前端模版" class="anchor" href="#%E6%9C%80%E6%B5%81%E8%A1%8C%E7%9A%84web%E5%BC%80%E5%8F%91%E5%89%8D%E7%AB%AF%E6%A8%A1%E7%89%88" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>最流行的web开发前端模版</h1>
 
-<p>一个快速打包好的前端站点框架模板，包括基本结构，基本文件和说明 ★Google统计、图标 和 更多</p>
+<p>一个快速打包好的前端站点框架模板，包括基本结构，基本文件和说明</p>
+
+<h2>
+<a id="html5-boilerplate是什么解决了什么问题" class="anchor" href="#html5-boilerplate%E6%98%AF%E4%BB%80%E4%B9%88%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTML5 Boilerplate是什么？解决了什么问题？</h2>
+
+<p>对于第一次听说这个人，肯定都有这个疑问把！在网上看了看，发现很多人都认为这个是和Bootstrap一样的东西，这真是大错特错了。
+实际上，HTML5 Boilerplate只是一个单纯的HTML模版。
+什么？HTML模版？干嘛用？
+这里不得不提所有前端开发都会遇到的问题，每次要重新弄一个页面的时候，你们都是怎么做的呢？那个doctype、html、head、body、meta标签，写的多心烦。或者从以前的项目中复制，或者抄一抄Bootstrap推荐的模版等等。但是在做这些事情的时候，有没有想过，自己的写法是否是最好的呢？或者说业界对这个有没有一个比较统一的推荐？那么，答案是有的。
+HTML5 Boilerplate就是解决了这么一个问题，它提供了一个十分完善的HTML模版，完善到所有的页面似乎都应该遵守这个规则。
+说的这么神乎其神，那么我们还是要一看究竟才行。从官网下载 然后，最核心的的是一个index.html文件，不大，我们来看看它的源码
+复制代码
+&lt;!DOCTYPE html&gt;</p>
+
+
+
+
+
+
+
+<p>  
+    </p>
+        
+        
+        
+        
+        
+
+<pre><code>    &lt;!-- Place favicon.ico and apple-touch-icon.png in the root directory --&gt;
+
+    &lt;link rel="stylesheet" href="css/normalize.css"&gt;
+    &lt;link rel="stylesheet" href="css/main.css"&gt;
+    &lt;script src="js/vendor/modernizr-2.6.2.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!--[if lt IE 7]&gt;
+        &lt;p class="browsehappy"&gt;You are using an &lt;strong&gt;outdated&lt;/strong&gt; browser. Please &lt;a href="http://browsehappy.com/"&gt;upgrade your browser&lt;/a&gt; to improve your experience.&lt;/p&gt;
+    &lt;![endif]--&gt;
+
+    &lt;!-- Add your site or application content here --&gt;
+    &lt;p&gt;Hello world! This is HTML5 Boilerplate.&lt;/p&gt;
+
+    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;window.jQuery || document.write('&lt;script src="js/vendor/jquery-1.10.2.min.js"&gt;&lt;\/script&gt;')&lt;/script&gt;
+    &lt;script src="js/plugins.js"&gt;&lt;/script&gt;
+    &lt;script src="js/main.js"&gt;&lt;/script&gt;
+
+    &lt;!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --&gt;
+    &lt;script&gt;
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>
+复制代码
+这可以说就是HTML5 Boilerplate的全部了。大概看一下，肯定会发现有些是和自己以前的写法一样的，有些又是没见过的写法，或者说自己也是这么写的但是从来没想过为什么。下面，就先“解剖”下这个HTML文件把。</p>
+
+<p>二：浅析index.html
+首先，文档类型使用了HTML5文档声明，比起HTML4的那一大长串，这个明显简单明了。而且，兼容全部浏览器。因为IE在设计的时候，对于这种写法也会进入标准模式。所以，以后的文档声明都这样写，省心。</p>
+
+<p>然后，是这么一大段</p>
+
+
+
+
+
+
+
+<p>  
+这段代码很经典。</p>
+
+<p>首先，我们先看这些条件判断，意思分别是低于IE7，等于IE7，等于IE8，高于IE8。
+然后条件注释里面，就有相应的类名，比如在 lt IE 7中，html标签上便会有  lt-ie9 lt-ie8 lt-ie7这3个类，意思分别是低于ie7、8、9 。有什么用呢？其实最大的左右就是在写CSS HACK的时候，因为这样写，就可以不用CSS HACK了，比如如果是ie6，那么html标签上就会有 lt-ie7这个类，直接用CSS优先级覆盖之前的设置即可。</p>
+
+<p>然后特殊的地方应该就在最后一句了，最后一句的意思是所有大于ie8和非ie浏览器都使用这个html头。仔细看会发现里面加了几个残缺的注释标签。有什么用呢，对于大于ie8的ie浏览器，这几个标签完全忽略。对于非ie浏览器。由于不识别[if gt IE 8]，然后和后面的注释一起，会发现整个这部分都被注释了。这样，就实现了最完美的浏览器识别了。</p>
+
+<p>然后还有一个no-js类。这个主要是会和后面的modernizr.js一起使用。因为modernizr会在浏览器启用的js的时候，把no-js换成js。简单来说这个类可以用来判断浏览器是否启用了js。</p>
+
+<p>接着，就是
+
+
+</p>
+
+
+首先，先设置文档编码，记住这个放最前面（特别注意别放title后面），以免后面代码出现乱码。
+接下来便是设置IE使用最新版本来渲染
+然后是描述，便于SEO。viewport指定移动端不对网页进行缩放。
+这些个元标签基本都是一个网页必须要有的，所以大家可以检查下自己的网站是否漏了什么。
+
+<p>之后，引入了normalize、main两个css。modernizr这个js。关于这3个文件，后面再详细说明。</p>
+
+<p>进入主体部分。
+首先，看到这么一段</p>
+
+
+
+<p>对于使用低于IE7版本的用户，给出升级提示，当然，我们可以选择删除这一段或者换成一个中文提示</p>
+
+<p>然后呢，便是这一段脚本</p>
+
+
+
+
+
+
+
+
+
+<p>首先，通过CDN引入jquery。这里用的是谷歌的CDN。如果这段照抄，那么，，嘿嘿，网站肯定杯具了。所以这里换成国内的jqueryCDN把，比如七牛的。
+然后，判断jQuery对象是否存在。因为CDN有可能挂了。如果jQuery对象不存在，那么我们就可以用自己服务器的jquery把。
+然后引入了plugins.js还有main.js。main.js是空的，plugins.js后面详细说明。</p>
+
+<p>最后一段代码就是引入google统计了。这里，根据自己的需要换成百度统计或者是别的把。就不详细说了。</p>
+
+<p>至此，HTML5 Boilerplate的最关键的模版HTML算是讲完了。以后要新弄一个页面，就照着这个copy把。
+不过，HTML5 Boilerplate提供的还不止这些，下面讲讲单个文件的作用把。</p>
+
+<p>三：静态文件
+打开项目代码，可以看到有挺多的文件的，有些是说明文件，比如doc/路径下的，就不讲了，有些是值得讲讲的，比如css/ js/下的部分文件。挑几个有趣的说说把。</p>
+
+<p>首先 css目录下有main和normalize
+normalize也许大家都听过，就是一个浏览器重置，里面的每一条css都是进过千千万万的人精挑细选的，基本上这个重置属于公认的了。
+里面的具体每条规则就不细讲了，可以百度查看这个项目的文档，或者直接看注释也ok。
+main就是改项目对normalize的补充，可以看到提供了一些基础类名方便大家，比如图片置换，清除浮动等等。</p>
+
+<p>js提供了个plugins.js
+代码如下
+复制代码
+// Avoid <code>console</code> errors in browsers that lack a console.
+(function() {
+    var method;
+    var noop = function () {};
+    var methods = [
+        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+        'timeStamp', 'trace', 'warn'
+    ];
+    var length = methods.length;
+    var console = (window.console = window.console || {});</p>
+
+<pre><code>while (length--) {
+    method = methods[length];
+
+    // Only stub undefined methods.
+    if (!console[method]) {
+        console[method] = noop;
+    }
+}
+</code></pre>
+
+<p>}());
+复制代码
+比较简单，就不说明了。解决的主要问题就是用console调试的时候IE报错。这个问题我想大家都遇见过，调试代码忘记删除，线上IE报错，导致js无法继续执行。加了这个，就可以避免掉这问题了。</p>
+
+<p>还有就是modernizr了，这是个强大的浏览器功能检查js，具体使用可以在官网上看看教程，这里就不说了。</p>
+
+<p>然后，还提供了一些个文件，比如apache的配置htaccess、 404页面、flash跨域需要的文件crossdomain.xml、爬虫过滤文件robots.txt等，大家按需使用。</p>
+
+<p>至此，HTML5 Boilerplate算是全部理完了，很简单的一个项目，但是很实用，也很漂亮。可以作为开发标配。</p>
+
+<p>/********************************************/
+ ★Google统计、图标 和 更多</p>
 
 <p>压缩包内包含了 一个干净、移动终端友好的HTML模版；优化过的Google统计代码；触摸屏设备上使用的图标（这个可以替换成你自己的）；还有丰富的文档、技巧、窍门。</p>
 
