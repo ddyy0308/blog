@@ -1,6 +1,6 @@
 {
   "name": "邓勇博客-github.io",
-  "tagline": "html5标准模板",
-  "body": "前端html5站点标准模板",
+  "tagline": "记录软件开发过程中的点点滴滴",
+  "body": "html5站点标准模板\r\n一个快速打包好的前端站点框架模板，包括基本结构，基本文件和说明\r\nhttps://github.com/h5bp/html5-boilerplate",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
